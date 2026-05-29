@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>❤️</title>
+
+  <link rel="stylesheet" href="styles/love.css">
+</head>
+
+<body>
+
+  <canvas id="heart"></canvas>
+
+  <audio
+    id="backgroundMusic"
+    loop
+    preload="auto"
+    autoplay
+    playsinline
+  >
+
+    <source
+      src="assets/Best Part.mp3"
+      type="audio/mpeg"
+    >
+
+  </audio>
+
+  <script src="script/love.js"></script>
+
+  <script>
+
+    const music =
+    document.getElementById(
+      "backgroundMusic"
+    );
+
+    // AMBIL WAKTU TERAKHIR
+
+    const savedTime =
+    localStorage.getItem(
+      "musicCurrentTime"
+    );
+
+    if(savedTime){
+
+      music.currentTime =
+      parseFloat(savedTime);
+    }
+
+    // PLAY MUSIC
+
+    document.addEventListener(
+      "click",
+      () => {
+
+        music.play();
+
+      },
+      { once:true }
+    );
+
+    // SIMPAN WAKTU MUSIC
+
+    setInterval(() => {
+
+      localStorage.setItem(
+        "musicCurrentTime",
+        music.currentTime
+      );
+
+    },1000);
+
+  </script>
+
+</body>
+</html>
